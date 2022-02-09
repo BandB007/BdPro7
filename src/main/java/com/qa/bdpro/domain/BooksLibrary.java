@@ -26,5 +26,30 @@ public class BooksLibrary {
 
 	@Column
 	private String reserved;
+	
+//Empty Constructor
+	public BooksLibrary() {}
+
+//Constructor without id	
+	public BooksLibrary(String title, String author, String available, String reserved) {
+	this.title = title;
+	this.author = author;
+	this.available = available;
+	this.reserved = reserved;
+}
+	
+//Constructor with all variables
+public BooksLibrary(Long id, String title, String author, String available, String reserved) {
+	this.id = id;
+	this.title = title;
+	this.author = author;
+	this.available = available;
+	this.reserved = reserved;
+}
+
+	
+	
+	
+	
 
 }
