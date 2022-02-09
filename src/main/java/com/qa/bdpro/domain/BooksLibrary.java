@@ -1,5 +1,7 @@
 package com.qa.bdpro.domain;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,6 +49,7 @@ public BooksLibrary(Long id, String title, String author, String available, Stri
 	this.reserved = reserved;
 }
 
+//getters and setters
 public Long getId() {
 	return id;
 }
@@ -87,7 +90,35 @@ public void setReserved(String reserved) {
 	this.reserved = reserved;
 }
 
+//hashcode, equals and tostring
+@Override
+public int hashCode() {
+	return Objects.hash(author, available, id, reserved, title);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	BooksLibrary other = (BooksLibrary) obj;
+	return Objects.equals(author, other.author) && Objects.equals(available, other.available)
+			&& Objects.equals(id, other.id) && Objects.equals(reserved, other.reserved)
+			&& Objects.equals(title, other.title);
+}
+
+@Override
+public String toString() {
+	return "BooksLibrary [id=" + id + ", title=" + title + ", author=" + author + ", available=" + available
+			+ ", reserved=" + reserved + "]";
+}
+
+
 	
+
 	
 	
 	
