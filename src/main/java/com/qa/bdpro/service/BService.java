@@ -9,7 +9,7 @@ import com.qa.bdpro.domain.BooksLibrary;
 import com.qa.bdpro.repo.BRepo;
 
 @Service
-public class BService {
+public class BService implements BServiceInterface<BooksLibrary> {
 	
 	private BRepo repo;
 	
@@ -46,4 +46,28 @@ public class BService {
 			this.repo.deleteById(id);	
 			return toDelete.orElse(null);
 		}
+
+@Override
+public List<BooksLibrary> readAll() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public BooksLibrary readone(Long id) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public BooksLibrary update(Long id, BooksLibrary book) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public BooksLibrary readOne(Long id) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
