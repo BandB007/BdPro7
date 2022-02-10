@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.bdpro.domain.BooksLibrary;
+import com.qa.bdpro.service.BService;
 
 @RestController
 public class BController {
@@ -38,19 +39,19 @@ public class BController {
 	//finding by id
 		@GetMapping("/getOne/{id}")
 		public ResponseEntity<BooksLibrary>getOne(@PathVariable Long id) {
-			return new ResponseEntity<BooksLibrary>(this.service.readbyid(id), HttpStatus.ACCEPTED);
+			return new ResponseEntity<BooksLibrary>(this.service.getById(id), HttpStatus.ACCEPTED);
 		}
 	
 	//update
 		@PutMapping("/replace/{id}")
 		public ResponseEntity<BooksLibrary>replace(@PathVariable Long id, BooksLibrary book) {
-			return new ResponseEntity<BooksLibrary>(this.service.getOne(id), HttpStatus.ACCEPTED);
+			return new ResponseEntity<BooksLibrary>(this.service.replace(id, book), HttpStatus.ACCEPTED);
 		}
 
 	//delete
 		@DeleteMapping("/delete/{id}")
-		public ResponseEntity<BooksLibrary>delete(@PathVariable Long id, BooksLibrary book) {
-			return new ResponseEntity<BooksLibrary>(this.service.getOne(id), HttpStatus.OK);
+		public ResponseEntity<BooksLibrary>delete(@PathVariable Long id) {
+			return new ResponseEntity<BooksLibrary>(this.service.delete(id), HttpStatus.OK);
 
 		}
 }
