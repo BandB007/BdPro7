@@ -1,23 +1,35 @@
 # BdPro7
+The objective of the project was to create a list of books in a library using the technologies that have been covered throuh out the training.
 
-To establish my learning that I have been through for the past 9 weeks via intense bootcamp.
+# Technologies
+Git                  : version control
 
-I expect that coding and testing are part of the challenges where I may hit most bumps. I also believe if that happens then that will help me gain a clear understanding of everything I have learned on the project.
+GitHub               : source code management
 
-For future revision of the project I’ll read more, watch more videos and keep revisiting certain topics till my doubts are clear and so is the understanding of the topic.
+Project Management   : Jira
 
-What went well:
+Database Management  : MySql
 
+API testing platform : Postman
 
-What didn't go as planned:
+Programming Language : Java
 
+Framework            : SpringBoot Application
 
+# Expectation
+I had expected most challenges in Coding and Testing. 
 
+# Things that went well
+Surprisingly coding and testing! I had errors however not to the extent I had expected. 
 
+# Things that didn't go as planned
+Creating Git branches didn't go as I had planned and due to that I had to restart my project mid week. The branches are looking bit better than the graph of original project.
+
+# Possible improvements for future revisions of the project
+Possible improvements can be offering more find method to users, like finding a book by title, author, availabe status and reserved status. Creating more tables with more reading materials like newspaper and magazines.
 
 # Jira Board
 Please find my Jira board on [this link](https://bdstudy07.atlassian.net/jira/software/projects/BD/boards/2)
-
 
 # Screenshots
 ### Database persistent
@@ -32,6 +44,11 @@ Please find my Jira board on [this link](https://bdstudy07.atlassian.net/jira/so
 ### Testing Coverage
 ![Testing Coverage 2022-02-11 113742](https://user-images.githubusercontent.com/95347900/153593657-0d285317-30d9-40dc-8883-949441b1e765.png)
 
+# Acknowledgements
+
+. Luis Neito - Java, Databases and Testing.
+
+. Dorota Bialy - Git
 
 
 
