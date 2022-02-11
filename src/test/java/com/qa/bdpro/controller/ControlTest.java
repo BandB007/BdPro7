@@ -36,6 +36,7 @@ public class ControlTest {
 	@Autowired
 		private ObjectMapper map;// Interpreting JSON
 	
+	//create
 	@Test
 		void createTest() throws Exception {
 			// create a book in Library
@@ -56,6 +57,7 @@ public class ControlTest {
 			this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchBody);
 		}
 		
+		//read
 		@Test
 			void readTest() throws Exception {	
 			BooksLibrary readB = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
@@ -67,7 +69,20 @@ public class ControlTest {
 			this.mock.perform(readReq).andExpect(status).andExpect(body);
 
 		}
-
+		
+		//read by id
+		@Test
+		void readByIdTest() throws Exception {	
+		BooksLibrary readById = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
+		List<BooksLibrary> allBook = List.of(readById);
+		String readBookJSON = this.map.writeValueAsString(allBook);
+		RequestBuilder readReq = get("/getById");
+		ResultMatcher status = status().isOk();
+		ResultMatcher body = content().json(readBookJSON);
+		this.mock.perform(readReq).andExpect(status).andExpect(body);
+		}
+		
+		//update
 		@Test
 			void updateTest() throws Exception {
 			BooksLibrary updateBook = new BooksLibrary("Always", "Al", "No", "Yes");
@@ -83,7 +98,8 @@ public class ControlTest {
 
 			this.mock.perform(updateReq).andExpect(retStatus).andExpect(retBody);
 		}
-
+		
+		//delete
 		@Test
 			void deleteTest() throws Exception {
 			BooksLibrary deleteBook = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
@@ -94,5 +110,4 @@ public class ControlTest {
 			ResultMatcher Body = content().json(deleteBookJSON);
 			this.mock.perform(delRequest).andExpect(Status).andExpect(Body);
 		}
-
 }
