@@ -91,9 +91,18 @@ public void setReserved(String reserved) {
 }
 
 //hashcode, equals and tostring
+
+
+
+@Override
+public String toString() {
+	return "BooksLibrary [id=" + id + ", title=" + title + ", author=" + author + ", available=" + available
+			+ ", reserved=" + reserved + "]";
+}
+
 @Override
 public int hashCode() {
-	return Objects.hash(author, available, id, reserved, title);
+	return Objects.hash(author, available, reserved, title);
 }
 
 @Override
@@ -106,14 +115,7 @@ public boolean equals(Object obj) {
 		return false;
 	BooksLibrary other = (BooksLibrary) obj;
 	return Objects.equals(author, other.author) && Objects.equals(available, other.available)
-			&& Objects.equals(id, other.id) && Objects.equals(reserved, other.reserved)
-			&& Objects.equals(title, other.title);
-}
-
-@Override
-public String toString() {
-	return "BooksLibrary [id=" + id + ", title=" + title + ", author=" + author + ", available=" + available
-			+ ", reserved=" + reserved + "]";
+			&& Objects.equals(reserved, other.reserved) && Objects.equals(title, other.title);
 }
 
 
