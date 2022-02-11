@@ -19,7 +19,7 @@ public class BService implements BServiceInterface<BooksLibrary> {
 
 //create
 	public BooksLibrary create(BooksLibrary book) {
-		return this.repo.saveAndFlush(book);
+		return this.repo.save(book);
 	}	
 	
 //Read All

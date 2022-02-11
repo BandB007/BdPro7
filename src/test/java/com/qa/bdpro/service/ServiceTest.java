@@ -1,17 +1,15 @@
 package com.qa.bdpro.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
 import com.qa.bdpro.domain.BooksLibrary;
 import com.qa.bdpro.repo.BRepo;
 
@@ -45,13 +43,29 @@ public class ServiceTest {
 		//Verify
 		Mockito.verify(this.repo, Mockito.times(1)).save(newBook);		
 	}
+	//Read
 	@Test
-	void testReadAll() {
-		
-		
+	void testgetAll() {
+	List<BooksLibrary> output = new ArrayList<>();
+	output.add (new BooksLibrary("Maxim", "Max", "No", "Yes"));
+	Mockito.when(this.repo.findAll()).thenReturn(output);
+	assertThat(this.service.getAll()).isEqualTo(output);
+	Mockito.verify(this.repo,Mockito.times(1)).findAll();
 	}
-	
-	
+	//getById
+	@Test
+	void testgetById() {
+	// GIVEN - id, object
+		Long id = 1L;
+		BooksLibrary toFind = new BooksLibrary("Bravo", "Bro", "No", "Yes");
+		Optional<BooksLibrary> optBook = Optional.of(new BooksLibrary());
+		BooksLibrary found = new BooksLibrary (id, toFind.getTitle(), toFind.getAuthor(), 
+				toFind.getAvailable(), toFind.getReserved());
+		//When 
+		Mockito.when(this.repo.findById(id)).thenReturn(optBook);	
+		assertThat(this.service.update(id, toFind)).isEqualTo(found);
+		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+	}	
 	
 	@Test
 	void testUpdate() {	
