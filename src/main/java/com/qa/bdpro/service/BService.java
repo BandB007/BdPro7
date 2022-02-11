@@ -18,56 +18,39 @@ public class BService implements BServiceInterface<BooksLibrary> {
 	}
 
 //create
+	@Override
 	public BooksLibrary create(BooksLibrary book) {
 		return this.repo.save(book);
 	}	
 	
 //Read All
+	@Override
 	public List<BooksLibrary> getAll() {
 		return this.repo.findAll();
 	}
 
 //getone
-	public BooksLibrary getById(Long id) {
+	@Override
+	public BooksLibrary getByID(Long id) {
 		return this.repo.findById(id).get();
 	}
 //update
-	public BooksLibrary replace(Long id, BooksLibrary book) {
+	@Override
+	public BooksLibrary update(Long id, BooksLibrary book) {
 		BooksLibrary existing = this.repo.findById(id).get();
 		existing.setAuthor(book.getAuthor());
 		existing.setAvailable(book.getAvailable());
 		existing.setReserved(book.getReserved());
 		existing.setTitle(book.getTitle());
-		return this.repo.saveAndFlush(existing);
+		return this.repo.save(existing);
 	}
-//delete
+	
+	//delete
+	@Override
 		public BooksLibrary delete(Long id) {
 			Optional<BooksLibrary> toDelete = this.repo.findById(id);
 			this.repo.deleteById(id);	
 			return toDelete.orElse(null);
 		}
-
-@Override
-public List<BooksLibrary> readAll() {
-	// TODO Auto-generated method stub
-	return null;
 }
 
-@Override
-public BooksLibrary readone(Long id) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public BooksLibrary update(Long id, BooksLibrary book) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public BooksLibrary readOne(Long id) {
-	// TODO Auto-generated method stub
-	return null;
-}
-}

@@ -1,6 +1,7 @@
 package com.qa.bdpro.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -24,10 +25,10 @@ import com.qa.bdpro.domain.BooksLibrary;
 
 @SpringBootTest
 @AutoConfigureMockMvc //making the test requests
-@Sql(scripts = { "classpath:bdpro-schema.sql",
-		"classpath:bdpro-data.sql" }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:books-schema.sql",
+		"classpath:books-data.sql" }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 																									
-@ActiveProfiles("bdtest")
+@ActiveProfiles("test")
 public class ControlTest {
 
 	@Autowired
@@ -40,7 +41,7 @@ public class ControlTest {
 	@Test
 		void createTest() throws Exception {
 			// create a book in Library
-			BooksLibrary newB = new BooksLibrary ("Aim", "Amy", "Yes", "No");
+			BooksLibrary newB = new BooksLibrary ("Big", "Biggy", "No","Yes");
 			String newBJSON = this.map.writeValueAsString(newB);
 			RequestBuilder mockRequest = post("/create").contentType(MediaType.APPLICATION_JSON)
 					.content(newBJSON);

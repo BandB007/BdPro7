@@ -39,13 +39,13 @@ public class BController {
 	//finding by id
 		@GetMapping("/getOne/{id}")
 		public ResponseEntity<BooksLibrary>getOne(@PathVariable Long id) {
-			return new ResponseEntity<BooksLibrary>(this.service.getById(id), HttpStatus.ACCEPTED);
+			return new ResponseEntity<BooksLibrary>(this.service.getByID(id), HttpStatus.ACCEPTED);
 		}
 	
 	//update
 		@PutMapping("/replace/{id}")
 		public ResponseEntity<BooksLibrary>replace(@PathVariable Long id, BooksLibrary book) {
-			return new ResponseEntity<BooksLibrary>(this.service.replace(id, book), HttpStatus.ACCEPTED);
+			return new ResponseEntity<BooksLibrary>(this.service.update(id, book), HttpStatus.ACCEPTED);
 		}
 
 	//delete
