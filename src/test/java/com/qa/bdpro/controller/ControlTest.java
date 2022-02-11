@@ -61,10 +61,10 @@ public class ControlTest {
 		//read
 		@Test
 			void readTest() throws Exception {	
-			BooksLibrary readB = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
+			BooksLibrary readB = new BooksLibrary(1L, "Aim", "Amy", "No", "Yes");
 			List<BooksLibrary> allBook = List.of(readB);
 			String readBookJSON = this.map.writeValueAsString(allBook);
-			RequestBuilder readReq = get("/getAll");
+			RequestBuilder readReq = get("/getall");
 			ResultMatcher status = status().isOk();
 			ResultMatcher body = content().json(readBookJSON);
 			this.mock.perform(readReq).andExpect(status).andExpect(body);
@@ -74,11 +74,10 @@ public class ControlTest {
 		//read by id
 		@Test
 		void readByIdTest() throws Exception {	
-		BooksLibrary readById = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
-		List<BooksLibrary> allBook = List.of(readById);
-		String readBookJSON = this.map.writeValueAsString(allBook);
-		RequestBuilder readReq = get("/getById");
-		ResultMatcher status = status().isOk();
+		BooksLibrary readById = new BooksLibrary(1L, "Aim", "Amy", "No", "Yes");
+		String readBookJSON = this.map.writeValueAsString(readById);
+		RequestBuilder readReq = get("/getOne/1");
+		ResultMatcher status = status().isAccepted();
 		ResultMatcher body = content().json(readBookJSON);
 		this.mock.perform(readReq).andExpect(status).andExpect(body);
 		}
@@ -88,25 +87,21 @@ public class ControlTest {
 			void updateTest() throws Exception {
 			BooksLibrary updateBook = new BooksLibrary("Always", "Al", "No", "Yes");
 			String updateBookJSON = this.map.writeValueAsString(updateBook);
-			Long IDupdate = 1L;
-			RequestBuilder updateReq = put("/replace/" + IDupdate).contentType(MediaType.APPLICATION_JSON)
+			RequestBuilder updateReq = put("/replace/1").contentType(MediaType.APPLICATION_JSON)
 					.content(updateBookJSON);
-			BooksLibrary retUpdatedBook = new BooksLibrary (1L, "Bepos", "Bpo", "No", "Yes");
+			BooksLibrary retUpdatedBook = new BooksLibrary (1L, "Always", "Al", "No", "Yes");
 			String retUpdatedBookJSON = this.map.writeValueAsString(retUpdatedBook);
-			
-			ResultMatcher retStatus = status().isOk();
+			ResultMatcher retStatus = status().isAccepted();
 			ResultMatcher retBody = content().json(retUpdatedBookJSON);
-
 			this.mock.perform(updateReq).andExpect(retStatus).andExpect(retBody);
 		}
 		
 		//delete
 		@Test
 			void deleteTest() throws Exception {
-			BooksLibrary deleteBook = new BooksLibrary(1L, "Bepos", "Bpo", "No", "Yes");
+			BooksLibrary deleteBook = new BooksLibrary(1L, "Aim", "Amy", "No", "Yes");
 			String deleteBookJSON = this.map.writeValueAsString(deleteBook);
-			Long remId = 1L;
-			RequestBuilder delRequest = delete("/delete/" + remId);
+			RequestBuilder delRequest = delete("/delete/1");
 			ResultMatcher Status = status().isOk();
 			ResultMatcher Body = content().json(deleteBookJSON);
 			this.mock.perform(delRequest).andExpect(Status).andExpect(Body);

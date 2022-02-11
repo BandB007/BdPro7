@@ -44,7 +44,7 @@ public class BController {
 	
 	//update
 		@PutMapping("/replace/{id}")
-		public ResponseEntity<BooksLibrary>replace(@PathVariable Long id, BooksLibrary book) {
+		public ResponseEntity<BooksLibrary>replace(@PathVariable Long id, @RequestBody BooksLibrary book) {
 			return new ResponseEntity<BooksLibrary>(this.service.update(id, book), HttpStatus.ACCEPTED);
 		}
 

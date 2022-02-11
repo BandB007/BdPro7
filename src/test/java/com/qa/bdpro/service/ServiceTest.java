@@ -57,13 +57,13 @@ public class ServiceTest {
 	void testgetById() {
 	// GIVEN - id, object
 		Long id = 1L;
-		BooksLibrary toFind = new BooksLibrary("Bravo", "Bro", "No", "Yes");
-		Optional<BooksLibrary> optBook = Optional.of(new BooksLibrary());
+		BooksLibrary toFind = new BooksLibrary(1L,"Maxim", "Max", "No", "Yes");
+		Optional<BooksLibrary> optBook = Optional.of(toFind);
 		BooksLibrary found = new BooksLibrary (id, toFind.getTitle(), toFind.getAuthor(), 
 				toFind.getAvailable(), toFind.getReserved());
 		//When 
 		Mockito.when(this.repo.findById(id)).thenReturn(optBook);	
-		assertThat(this.service.update(id, toFind)).isEqualTo(found);
+		assertThat(this.service.getByID(id)).isEqualTo(found);
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 	}	
 	
