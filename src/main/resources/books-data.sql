@@ -1,2 +1,2 @@
-Insert into `books` (`author`, `title`, `available`, `reserved`) VALUES ('Amy', 'Aim', 'No', 'Yes');
+Insert into `books` (`title`, `author`, `available`, `reserved`) VALUES ('Aim', 'Amy', 'No', 'Yes');
 

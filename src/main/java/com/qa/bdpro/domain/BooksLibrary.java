@@ -94,11 +94,11 @@ public void setReserved(String reserved) {
 
 
 
-@Override
-public String toString() {
-	return "BooksLibrary [id=" + id + ", title=" + title + ", author=" + author + ", available=" + available
-			+ ", reserved=" + reserved + "]";
-}
+//@Override
+//public String toString() {
+//	return "BooksLibrary [id=" + id + ", title=" + title + ", author=" + author + ", available=" + available
+//			+ ", reserved=" + reserved + "]";
+//}
 
 @Override
 public int hashCode() {
@@ -117,12 +117,5 @@ public boolean equals(Object obj) {
 	return Objects.equals(author, other.author) && Objects.equals(available, other.available)
 			&& Objects.equals(reserved, other.reserved) && Objects.equals(title, other.title);
 }
-
-
-	
-
-	
-	
-	
 
 }
